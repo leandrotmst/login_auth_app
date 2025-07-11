@@ -1,29 +1,26 @@
-version: "3.8"
+version: '3.8'
 
 services:
   web:
-    build:
-      context: ./backend
-      dockerfile: Dockerfile
+    build: .
     ports:
       - "5000:5000"
+    environment:
+      SECRET_KEY: ${FLASK_SECRET_KEY}
+      DATABASE_URL: ${DATABASE_URL}
     depends_on:
       - db
-    environment:
-      - DB_HOST=db
-      - DB_NAME=auth_db
-      - DB_USER=postgres
-      - DB_PASS=postgres
+    restart: always
 
   db:
-    image: postgres:15
-    restart: always
+    image: postgres:13
     environment:
-      POSTGRES_DB: auth_db
-      POSTGRES_USER: postgres
-      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: ${POSTGRES_DB}
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
     volumes:
-      - pgdata:/var/lib/postgresql/data
+      - db_data:/var/lib/postgresql/data
+    restart: always
 
 volumes:
-  pgdata:
+  db_data:
