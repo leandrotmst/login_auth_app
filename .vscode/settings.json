@@ -12,7 +12,7 @@
   "editor.tabSize": 2,
   "editor.rulers": [79, 120],
   "workbench.iconTheme": "vscode-jetbrains-icon-theme-2023-dark",
-  "workbench.colorTheme": "OM Theme (Default Dracula Italic)",
+  "workbench.colorTheme": "Visual Studio Dark",
   "explorer.compactFolders": false,
   "editor.minimap.enabled": false,
   "workbench.editor.enablePreview": false,
