@@ -6,6 +6,25 @@ db = 'users.db'
 
 @app.route('/', methods=['GET', 'POST'])
 def login():
+    if request.form == 'POST':
+        username = request.form['username']
+        password = request.form['password']
+        action = request.form['action']
+        if action == 'register':
+            searchdb(username, password)
+            if searchdb(username, password) == None:
+                values = [username, password]
+                insertdb(values)
+            else:
+                return 'Login Successful!!'
+
+        elif action == 'login':
+            searchdb(username, password)
+            if searchdb(username, password) == None:
+                return 'Register the user first!!'
+            else:
+                return 'Login Successful!!'
+
     return render_template('login.html')
 
 def initdb():
@@ -25,8 +44,9 @@ def searchdb(username: str, password: str):
     conn = sqlite3.connect(db)
     cursor = conn.cursor()
     cursor.execute('SELECT * FROM users WHERE username = ? AND password_hash = ?', (username, password))
-    results = cursor.fetchall()
+    search = cursor.fetchone()
     conn.close()
+    return search
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=5000, debug=True)
