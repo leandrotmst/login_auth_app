@@ -1,34 +1,29 @@
 version: "3.8"
-# Docker e Docker compose
-# https://docs.docker.com/
-# https://docs.docker.com/compose/
 
 services:
-  db:
-    image: postgres:13
-    restart: always
-    environment:
-      POSTGRES_DB: flask_auth_db
-      POSTGRES_USER: user
-      POSTGRES_PASSWORD: password
-    volumes:
-      - db_data:/var/lib/postgresql/data
-    ports:
-      - "5432:5432" # Porta para acesso externo ao banco de dados (opcional, para depuração)
-
   web:
-    build: . # O Dockerfile agora está no mesmo diretório
-    restart: always
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
     ports:
       - "5000:5000"
-    volumes:
-      - .:/app # Monta o diretório atual (src/login_auth_app) para /app no contêiner
-    environment:
-      DATABASE_URL: postgresql://user:password@db:5432/flask_auth_db
-      SECRET_KEY: sua_chave_secreta_muito_segura # Altere esta chave em produção!
     depends_on:
-      - db # Garante que o banco de dados inicie antes do aplicativo web
-    command: sh -c "flask db upgrade || flask db init && flask db migrate && flask db upgrade && flask run --host=0.0.0.0" # Comandos para inicializar o DB e rodar o Flask
+      - db
+    environment:
+      - DB_HOST=db
+      - DB_NAME=auth_db
+      - DB_USER=postgres
+      - DB_PASS=postgres
+
+  db:
+    image: postgres:15
+    restart: always
+    environment:
+      POSTGRES_DB: auth_db
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+    volumes:
+      - pgdata:/var/lib/postgresql/data
 
 volumes:
-  db_data:
+  pgdata:
