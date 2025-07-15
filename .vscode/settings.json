@@ -1,87 +1,65 @@
 {
-  "window.zoomLevel": 1.8,
-  "breadcrumbs.enabled": true,
-  "editor.fontSize": 24,
-  "debug.console.fontSize": 24,
-  "terminal.integrated.fontSize": 24,
-  "editor.glyphMargin": true,
-  "workbench.activityBar.location": "default",
-  "editor.lineNumbers": "on",
-  "files.eol": "\n", // Final de linha sempre será LF
-  "workbench.editor.labelFormat": "short",
-  "editor.tabSize": 2,
-  "editor.rulers": [79, 120],
-  "workbench.iconTheme": "vscode-jetbrains-icon-theme-2023-dark",
-  "workbench.colorTheme": "OM Theme (Default Dracula Italic)",
-  "explorer.compactFolders": false,
-  "editor.minimap.enabled": false,
-  "workbench.editor.enablePreview": false,
-  "code-runner.clearPreviousOutput": true,
-  "code-runner.ignoreSelection": true,
-  "code-runner.saveFileBeforeRun": true,
-  "code-runner.runInTerminal": true,
-  "code-runner.preserveFocus": false,
-  "code-runner.executorMap": {
-    "python": "clear ; python -u",
-    "typescript": "npx tsx"
+    "window.zoomLevel": 0.8,
+    "editor.fontSize": 15,
+    "editor.hover.enabled": true,
+    "workbench.startupEditor": "none",
+    "explorer.compactFolders": false,
+    "terminal.integrated.fontSize": 15,
+    "editor.rulers": [80, 120],
+    "workbench.colorTheme": "OM Theme (Default Dracula Italic)",
+    "workbench.iconTheme": "material-icon-theme",
+    "code-runner.executorMap": {
+      "python": "clear ; python -u"
+    },
+    "code-runner.runInTerminal": true,
+    "code-runner.ignoreSelection": true,
+    "python.defaultInterpreterPath": ". venv/bin/activate",
+    "editor.fontFamily": "'Fira Code', 'Consolas', 'Dank Mono', 'Source Code Pro', 'Menlo', 'Inconsolata', 'Droid Sans Mono', 'DejaVu Sans Mono', 'Ubuntu Mono', 'Courier New', 'Courier', 'Monaco', 'monospace'",
+    "terminal.integrated.fontFamily": "",
+    "editor.fontLigatures": false,
+    "[python]": {
+      "editor.defaultFormatter": "ms-python.python",
+      "editor.tabSize": 4,
+      "editor.insertSpaces": true,
+      "editor.formatOnSave": true,
+      "editor.codeActionsOnSave": {
+        "source.fixAll": "explicit",
+        "source.fixAll.unusedImports": "explicit",
+        "source.organizeImports": "explicit"
+      }
+    },
+    "python.languageServer": "Pylance",
+    "python.formatting.autopep8Args": [
+      "--indent-size=4",
+      "--max-line-length=80"
+      // "--ignore=E111"
+    ],
+    "python.linting.flake8Args": [
+      // "--ignore=E111",
+    ],
+    "python.linting.flake8Enabled": true,
+    "python.linting.mypyEnabled": true,
+    "python.testing.unittestEnabled": false,
+    "python.testing.pytestEnabled": true,
+    "python.analysis.diagnosticSeverityOverrides": {
+      "reportUnknownMemberType": "none",
+      "reportUnknownArgumentType": "none",
+      "reportUnknownVariableType": "none",
+      "reportUnknownLambdaType": "none",
+      "reportUnknownParameterType": "none"
+    },
+    // "python.defaultInterpreterPath": "./venv/bin/python",
+    "python.analysis.typeCheckingMode": "basic",
+    "cSpell.enabled": true,
+    "explorer.confirmDelete": false,
+    "workbench.activityBar.location": "top",
+    "editor.minimap.enabled": false,
+    "editor.tabSize": 2,
+    "liveServer.settings.donotShowInfoMsg": true,
+    "explorer.confirmDragAndDrop": false,
+    "workbench.editor.empty.hint": "hidden",
+    "git.autofetch": true,
+    "emmet.includeLanguages": {
+    "django-html": "html"
   },
-  "tailwindCSS.experimental.classRegex": [
-    ["clsx\\(([^)]*)\\)", "(?:'|\"|`)([^']*)(?:'|\"|`)"]
-  ],
-  // Python
-  "[python]": {
-    "editor.defaultFormatter": "charliermarsh.ruff",
-    "editor.formatOnSave": true,
-    "editor.tabSize": 4,
-    "editor.insertSpaces": true,
-    "editor.codeActionsOnSave": {
-      "source.fixAll.ruff": "explicit",
-      "source.organizeImports.ruff": "explicit"
-    }
-  },
-  "python.defaultInterpreterPath": "./.venv/bin/python",
-  "python.analysis.autoImportCompletions": true,
-  "python.terminal.activateEnvInCurrentTerminal": true,
-  "python.terminal.activateEnvironment": true,
-  "python.languageServer": "Pylance",
-  "python.venvPath": ".venv",
-
-  // 🛠 Formatação e Lint
-  "editor.defaultFormatter": "esbenp.prettier-vscode",
-  "editor.formatOnSave": true,
-
-  "emmet.includeLanguages": {
-    "django-html": "html",
-    "javascript": "javascriptreact",
-    "typescript": "typescriptreact"
-  },
-
-  "editor.codeActionsOnSave": {
-    "source.fixAll.eslint": "explicit"
-  },
-
-  "[javascript]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
-  },
-  "[typescript]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
-  },
-  "[xml]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
-  },
-  "[svg]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
-  },
-  "[html]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
-  },
-  "[django-html]": {
-    "editor.formatOnSave": false,
-    "editor.defaultFormatter": "esbenp.prettier-vscode",
-    "editor.quickSuggestions": {
-      "other": true,
-      "comments": true,
-      "strings": true
-    }
-  }
 }
