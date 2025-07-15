@@ -1,6 +1,6 @@
 # 🔐 Sistema de Autenticação com Flask + SQLite + Docker
 
-Este é um projeto simples de autenticação (login e criação de conta) usando [Flask](https://flask.palletsprojects.com/), [SQLite](https://www.sqlite.org/) e [Docker Compose](https://docs.docker.com/compose/).
+Este é um projeto simples de autenticação (login e criação de conta) usando [Flask](https://flask.palletsprojects.com/), [SQLite](https://www.sqlite.org/) e [Docker Compose](https://docs.docker.com/compose/).  
 Ideal para quem quer praticar backend em Python e usar containers com Docker.
 
 ---
@@ -17,3 +17,4 @@ Ideal para quem quer praticar backend em Python e usar containers com Docker.
 ---
 
 ## 🗂️ Estrutura do projeto
+
