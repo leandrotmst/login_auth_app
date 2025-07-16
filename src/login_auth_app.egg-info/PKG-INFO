@@ -8,6 +8,7 @@ Project-URL: Homepage, https://www.otaviomiranda.com.br/
 Requires-Python: >=3.13
 Description-Content-Type: text/markdown
 Requires-Dist: bcrypt>=4.3.0
+Requires-Dist: db-sqlite3>=0.0.1
 Requires-Dist: flask>=3.1.1
 Requires-Dist: psycopg2-binary>=2.9.10
 Requires-Dist: python-dotenv>=1.1.0

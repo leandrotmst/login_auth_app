@@ -3,6 +3,12 @@ revision = 2
 requires-python = ">=3.13"
 
 [[package]]
+name = "antiorm"
+version = "1.2.1"
+source = { registry = "https://pypi.org/simple" }
+sdist = { url = "https://files.pythonhosted.org/packages/0b/f8/71baa4824d9666c1be51d117119579a97f461ddbded48b2e01a6ad0554b5/antiorm-1.2.1.tar.gz", hash = "sha256:96eb1841ce5163db4cf1dc13f4499ec2d7cffc190cf724b78ffdd3e6b7c4ff93", size = 171953, upload-time = "2016-06-28T22:52:03.354Z" }
+
+[[package]]
 name = "bcrypt"
 version = "4.3.0"
 source = { registry = "https://pypi.org/simple" }
@@ -83,6 +89,24 @@ wheels = [
 ]
 
 [[package]]
+name = "db"
+version = "0.1.1"
+source = { registry = "https://pypi.org/simple" }
+dependencies = [
+    { name = "antiorm" },
+]
+sdist = { url = "https://files.pythonhosted.org/packages/a9/22/f65d64c83e63790b3273c6adb3bff338ad594f46d84b41bd1f94593b40a6/db-0.1.1.tar.gz", hash = "sha256:980e772f15c1161d3b287ffec4f144e40961b0b3e6d5102809577870bf6c5808", size = 3350, upload-time = "2014-12-13T05:13:58.159Z" }
+
+[[package]]
+name = "db-sqlite3"
+version = "0.0.1"
+source = { registry = "https://pypi.org/simple" }
+dependencies = [
+    { name = "db" },
+]
+sdist = { url = "https://files.pythonhosted.org/packages/ff/00/e1f3d7bf1e0bff7c0574c0d5535c041e139d4ce43db196147e4c62f52ed5/db-sqlite3-0.0.1.tar.gz", hash = "sha256:4dd410aa28a2c5b66de477f9dc62f523133217dd31c7ed7eb085214bea148db9", size = 1390, upload-time = "2013-06-10T06:13:49.316Z" }
+
+[[package]]
 name = "execnet"
 version = "2.1.1"
 source = { registry = "https://pypi.org/simple" }
@@ -144,6 +168,7 @@ version = "0.0.1"
 source = { editable = "." }
 dependencies = [
     { name = "bcrypt" },
+    { name = "db-sqlite3" },
     { name = "flask" },
     { name = "psycopg2-binary" },
     { name = "python-dotenv" },
@@ -160,6 +185,7 @@ dev = [
 [package.metadata]
 requires-dist = [
     { name = "bcrypt", specifier = ">=4.3.0" },
+    { name = "db-sqlite3", specifier = ">=0.0.1" },
     { name = "flask", specifier = ">=3.1.1" },
     { name = "psycopg2-binary", specifier = ">=2.9.10" },
     { name = "pyright", marker = "extra == 'dev'" },

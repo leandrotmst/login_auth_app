@@ -1,5 +1,6 @@
 from flask import Flask, render_template, request
 import sqlite3
+from werkzeug.security import generate_password_hash, check_password_hash
 
 app = Flask(__name__)
 
@@ -12,31 +13,49 @@ def init_db():
 
 init_db()
 
-def register(values: list[str]):
+def register(username: str, password: str):
+    hashed_password = generate_password_hash(password)
     conn = sqlite3.connect('users.db')
     c = conn.cursor()
-    c.execute('INSERT INTO users (username, password) VALUES', values)
+    c.execute('INSERT INTO users (username, password) VALUES (?, ?)', (username, hashed_password))
     conn.commit()
     conn.close()
 
 def search(username: str, password: str):
     conn = sqlite3.connect('users.db')
     c = conn.cursor()
-    c.execute('SELECT * FROM users')
-    conn.commit()
+    c.execute('SELECT password FROM users WHERE username = ?', (username,))
+    row = c.fetchone()
     conn.close()
-    
+    if row and check_password_hash(row[0], password):
+        return True
+    return False
 
 @app.route('/', methods=['GET', 'POST'])
 def index():
-    message = ''
     if request.method == 'POST':
         action = request.form['action']
         username = request.form['username']
         password = request.form['password']
 
         if action == 'register':
-            values = [username, password]
-            register(values)
+            conn = sqlite3.connect('users.db')
+            c = conn.cursor()
+            c.execute('SELECT username FROM users WHERE username = ?', (username,))
+            exists = c.fetchone()
+            conn.close()
+            if not exists:
+                register(username, password)
+            else:
+                return render_template('index.html', message='Usuário já existe, pode fazer o login')
+
+        if action == 'login':
+            if search(username, password):
+                return render_template('success.html')
+            else:
+                return render_template('error.html')
 
     return render_template('index.html')
+
+if __name__ == "__main__":
+    app.run(debug=True)
