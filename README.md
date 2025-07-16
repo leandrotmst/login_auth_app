@@ -54,4 +54,4 @@ login_auth_app/
 
 ## Licença
 
-Este projeto é livre para
+Este projeto é livre para uso educacional
