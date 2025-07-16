@@ -1,0 +1,2 @@
+[console_scripts]
+login_auth_app = login_auth_app.main:run
