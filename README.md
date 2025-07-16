@@ -29,11 +29,13 @@ login_auth_app/
 ## Como executar
 
 1. Instale as dependências:
+
    ```
    pip install flask werkzeug
    ```
 
 2. Execute o servidor:
+
    ```
    python src/backend/app.py
    ```
